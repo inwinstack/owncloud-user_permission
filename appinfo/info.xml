@@ -8,6 +8,9 @@
     <version>0.0.1</version>
     <namespace>User_Permission</namespace>
     <category>other</category>
+    <types>
+        <authentication/>
+    </types>
     <dependencies>
         <owncloud min-version="8.1" />
     </dependencies>
