@@ -36,5 +36,7 @@ class PermissionController extends Controller {
 
     public function changeEnabled($checked, $user){
         ($checked === 'false') ? \OC_User::disableUser($user) : \OC_User::enableUser($user);
+         
+        return new DataResponse(array($user => $checked));
     }
 }

@@ -50,21 +50,21 @@
     }
 
 
-    ajaxSuccess.bind('GET:/settings/users/users', function() {
-        checkStatus().done(function(result) {
-            userListLoaded(result);
-        });
-    });
-    
-    ajaxSuccess.bind('POST:/settings/users/users', function(event) {
-        var user =  event.xhr.responseJSON.name;
-        checkStatus().done(function(result) {
-            userCreated(user);
-        });
-    });
-
-
     $(function () {
+    
+        ajaxSuccess.bind('GET:/settings/users/users', function() {
+            checkStatus().done(function(result) {
+                userListLoaded(result);
+            });
+        });
+        
+        ajaxSuccess.bind('POST:/settings/users/users', function(event) {
+            var user =  event.xhr.responseJSON.name;
+            checkStatus().done(function(result) {
+                userCreated(user);
+            });
+        });
+
         var thead = $('<th>');
         var row_enabled = $('<td>');
         var loading_div = $('<div>');

@@ -4,7 +4,6 @@ namespace OCA\User_Permission\AppInfo;
 use \OCP\AppFramework\App;
 
 use \OCA\User_Permission\Hooks\UserHooks;
-use \OCA\User_Permission\Hooks\LoginHooks;
 use \OCA\User_Permission\Controller\PermissionController;
 
 
@@ -18,12 +17,6 @@ class Application extends App {
         /**
          * Controllers
          */
-        $container->registerService('LoginHooks', function($c) {
-            return new LoginHooks(
-                $c->query('ServerContainer')->getUserSession()
-            );
-        });
-
         $container->registerService('UserHooks', function($c) {
             return new UserHooks(
                 $c->query('ServerContainer')->getUserManager()
