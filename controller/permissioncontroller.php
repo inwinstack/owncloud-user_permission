@@ -33,6 +33,9 @@ class PermissionController extends Controller {
         return new DataResponse($userValue);
     }
 
+    /**
+     * @NoAdminRequired
+     */
 
     public function changeEnabled($checked, $user){
         ($checked === 'false') ? \OC_User::disableUser($user) : \OC_User::enableUser($user);
