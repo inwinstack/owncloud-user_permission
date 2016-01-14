@@ -15,5 +15,5 @@ $app = new Application();
 $app->getContainer()->query('UserHooks')->register();
 $app->getContainer()->query('LoginHooks')->register();
 
-\OCP\Util::addScript('user_permission', 'script');
+\OCP\Util::addScript('user_permission', 'permission');
 \OCP\Util::addStyle( 'user_permission', "style");
