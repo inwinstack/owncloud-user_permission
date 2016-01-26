@@ -41,10 +41,13 @@
     }
 
 
-    function checkStatus() {
+    function checkStatus(uids) {
         return  $.ajax({
-                    method:'GET',
+                    method:'POST',
                     url: OC.generateUrl('/apps/user_permission/getEnabled'),
+                    data: {
+                        uid: uids,
+                    },
                     dataType: 'json'
                 }); 
     }
@@ -52,9 +55,18 @@
 
     $(function () {
     
-        ajaxSuccess.bind('GET:/settings/users/users', function() {
-            checkStatus().done(function(result) {
-                userListLoaded(result);
+        ajaxSuccess.bind('GET:/settings/users/users', function(event) {
+            var uids = "";
+            var uidResponse = event.xhr.responseJSON;
+            for(var i = 0; i < uidResponse.length; i++) {
+                uids += uidResponse[i]['name'];
+                if(i != uidResponse.length-1){
+                    uids += ',';
+                }
+            };
+
+            checkStatus(uids).done(function(result) {
+                userListLoaded(result.data);
             });
         });
         
