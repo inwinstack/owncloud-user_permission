@@ -24,6 +24,6 @@ $application = new Application();
 
 $application->registerRoutes($this, ['routes' => [
     ['name' => 'Permission#changeEnabled', 'url' => '/changeEnabled', 'verb' => 'POST'],
-    ['name' => 'Permission#getEnabled', 'url' => '/getEnabled', 'verb' => 'GET'],
+    ['name' => 'Permission#getEnabled', 'url' => '/getEnabled', 'verb' => 'POST'],
     
 ]]);
