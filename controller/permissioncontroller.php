@@ -18,9 +18,8 @@ class PermissionController extends Controller {
      * @NoAdminRequired
      */
 
-    public function getEnabled(){
-
-        $uids = \OCP\User::getUsers();
+    public function getEnabled($uid){
+        $uids = explode(",", $uid);
         $config = \OC::$server->getConfig();
         $userValue = $config->getUserValueForUsers('core', 'enabled', $uids);
         $max = sizeof($uids);
@@ -30,7 +29,7 @@ class PermissionController extends Controller {
             $userValue[$name] = (!array_key_exists($name, $userValue) || $userValue[$name] == 'true' || empty($userValue[$name])) ? true:false;
         }
 
-        return new DataResponse($userValue);
+        return new DataResponse(array("data" => $userValue, "status" => "success"));
     }
 
     /**
