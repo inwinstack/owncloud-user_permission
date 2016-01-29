@@ -20,6 +20,9 @@ class PermissionController extends Controller {
 
     public function getEnabled($uid){
         $uids = explode(",", $uid);
+        if($uids == "") {
+            array_push($uids,$uid);
+        }
         $config = \OC::$server->getConfig();
         $userValue = $config->getUserValueForUsers('core', 'enabled', $uids);
         $max = sizeof($uids);
