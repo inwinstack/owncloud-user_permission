@@ -64,7 +64,6 @@
                     uids += ',';
                 }
             };
-
             checkStatus(uids).done(function(result) {
                 userListLoaded(result.data);
             });
@@ -72,9 +71,11 @@
         
         ajaxSuccess.bind('POST:/settings/users/users', function(event) {
             var user =  event.xhr.responseJSON.name;
-            checkStatus().done(function(result) {
-                userCreated(user);
-            });
+            if(user != null){
+                checkStatus(user).done(function(result) {
+                    userCreated(user);
+                });
+            }
         });
 
         var thead = $('<th>');
