@@ -25,5 +25,17 @@ $application = new Application();
 $application->registerRoutes($this, ['routes' => [
     ['name' => 'Permission#changeEnabled', 'url' => '/changeEnabled', 'verb' => 'POST'],
     ['name' => 'Permission#getEnabled', 'url' => '/getEnabled', 'verb' => 'POST'],
-    
+    ['name' => 'Permission#importUser', 'url' => '/importUser', 'verb' => 'POST'],
 ]]);
+
+return [
+    'routes' => [
+        [
+            'name'         => 'permission_api#preflighted_cors', // Valid for all API end points
+            'url'          => '/api/{path}',
+            'verb'         => 'OPTIONS',
+            'requirements' => ['path' => '.+']
+        ],
+       ['name' => 'permission_api#getSession', 'url' => '/api/getSession', 'verb' => 'POST'],
+    ]
+];
