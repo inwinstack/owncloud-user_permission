@@ -25,17 +25,7 @@ class PermissionApiController extends ApiController {
      */
     public function getSession($username, $password){
         $session = \OC_User::login($username, $password);
-        $response = array();
-        if($session) {
-            $response['status'] = 'success';
-            $response['message'] = 'Logged in successfully.';
-            $response['name'] = $username;
-        }
-        else {
-            $response['status'] = 'error';
-            $response['message'] = 'Login failed. Incorrect credentials';
-        }
-
-        return new DataResponse($response);
+        
+        return $session;
     }
 }
